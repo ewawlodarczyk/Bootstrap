@@ -460,7 +460,7 @@ and open the template in the editor.
             if (nameOK && phoneOK && emailOK && messageOK && ageOK && maleOK) {
                 // czy moge wyslac, jesli tak to ukryj form i pokaz alert-success
 
-                $('.alert-success').slideDown();
+                $('.alert-success').slideDown(1000);
                 $('form').slideUp();
 
                 setTimeout(function () {
@@ -471,15 +471,15 @@ and open the template in the editor.
                     $('#male').val('');
                     $('#message').val('');
 
-                    $('.alert-success').slideUp();
-                    $('form').slideDown();
+                    $('.alert-success').slideUp(1000);
+                    $('form').slideDown(1000);
 
                 }, 5000);
 
             } else {
 
-                $('.alert-success').slideUp();
-                $('form').slideDown();
+                $('.alert-success').slideUp(1000);
+                $('form').slideDown(1000);
 
             }
 
