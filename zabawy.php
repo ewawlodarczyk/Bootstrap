@@ -72,14 +72,14 @@
             //2. wykonaj parseInt aby z 16px wydobyć wartość 16
             var b = parseInt ( a.fontSize ); //16
             //3. dodaj lub odejmij 1 do 16 i będzie 17 lub 15
-            if (arg == 1)  b++//b = b+1;
+            if(arg === 1)  b++//b = b+1;
                 
-            if (arg == -1) b--//b = b-1;
+            if(arg === -1) b--//b = b-1;
                 
-            if (arg == 0)  b = 16;
+            if(arg === 0)  b = 16;
                 
             //4. dodaj "px" do 15 lub 17
-            b = b + "px";
+            b = b + "px"; // b+="px"; - to samo, sklejenie tych elementów
             //5. ustaw 15px lub 17 px jako nową wartość dla fontSize
             
             a.fontSize = b;
@@ -93,9 +93,9 @@
 
                 console.log(d.display);
 
-                if (d.display == 'block') { // jeśli jest none to ustaw block
+                if (d.display == 'block') { // jeśli jest none to ustaw block - "SPRAWDZAM" LUB "PORÓWNUJĘ" CZY DISPLAY JEST BLOKIEM!!!!
 
-                    d.display = 'none';
+                    d.display = 'none'; //przypisuję d.displayowi parametr 'none'
 
                 } else { // jesli jest block to ustaw none
 
@@ -107,7 +107,7 @@
 
             function duzeLitery(stan) {
 
-                var cl = document.getElementById('lama').classList;
+                var cl = document.getElementById('lama').classList; // na tagu HTMLa o id "lama" będę coś robiła - dodawała lub odejmowała klasy
 
                 if (stan) {
                     cl.remove("text-lowercase");

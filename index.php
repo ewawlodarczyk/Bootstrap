@@ -32,22 +32,22 @@ and open the template in the editor.
             }
             /* Small Devices, Tablets */
             @media only screen and (min-width : 768px) {
-                 .carousel-caption p { font-size: 1.5em;}
-                 .carousel-caption h3 { font-size: 3em; text-shadow: 0px 0px 25px black;}
+                .carousel-caption p { font-size: 1.5em;}
+                .carousel-caption h3 { font-size: 3em; text-shadow: 0px 0px 25px black;}
             }
 
             /* Medium Devices, Desktops */
             @media only screen and (min-width : 992px) {
-                 .carousel-caption p { font-size: 1.5em;}
-                 .carousel-caption h3 { font-size: 5em; text-shadow: 0px 0px 25px black;}
+                .carousel-caption p { font-size: 1.5em;}
+                .carousel-caption h3 { font-size: 5em; text-shadow: 0px 0px 25px black;}
             }
-            
+
             .navbar {margin-bottom: 0px; border-radius: 0px; color: pink;}
-              
+
 
             .carousel-caption * { text-shadow: 0px 0px 100px black;}
 
-           
+
 
             body { 
                 font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -59,13 +59,30 @@ and open the template in the editor.
             .jumbotron img.pull-left { margin-right: 20px;}
             .jumbotron img.pull-right { margin-left: 20px;}
             .list-group { font-size: 1.5em;}
-           .table-hover> tbody> tr:hover {background-color: #d20025!important;}
+            .table-hover> tbody> tr:hover {background-color: #d20025!important;}
             table#wydarzenia { font-size: 1.5em;
-            border: 2px solid black!important;}
+                               border: 2px solid black!important;}
             button {background-color:#d20025;
-            font-size: 1.3em!important;}
+                    font-size: 1.3em!important;}
             .czerwony { color:#d20025!important;
-           }
+            }
+            div.fixed {
+                color: black;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                /*width: 300px;*/
+                border: 3px double black;
+                background-color: #EEEEEE;
+                padding: 10px;
+                font-size: 0.9em;
+                opacity: 0.8;
+                display: none;
+                /* ustawiam domyślnie na none display by cookies pojawił się tylko gdy nie ma wpisu do localStorage */
+            }
+            textarea {resize: vertical;}
+            .alert { display: none; width: 100%; }
+            
         </style>
     </head>       
 
@@ -124,7 +141,7 @@ and open the template in the editor.
                     <li class="<?php echo $site == 'wyklady' ? 'active' : ''; ?>">
                         <a href="index.php?site=wyklady">Wykłady</a>
                     </li>
-                    
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inne ośrodki <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -132,7 +149,7 @@ and open the template in the editor.
                             <li><a target="_blank" href="https://www.kuchary.pl/">Kuchary</a></li>
                             <li><a target="_blank" href="http://nagodzice.buddyzm.pl/">Nagodzice</a></li>
                             <li><a target="_blank" href="http://www.bartolty.buddyzm.pl/buddyzm.html">Bartołty Wielkie</a></li>
-                                                        
+
                         </ul>
                     </li>
                     <li class="<?php echo $site == 'kontakt' ? 'active' : ''; ?>">
@@ -202,6 +219,20 @@ and open the template in the editor.
     ?>
     <div class="container">
         <div class="jumbotron text-justify">
+            <div>
+
+                <button onclick="resize(1)" class="btn btn-sm ">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <button onclick="resize(0)" class="btn btn-sm ">
+                    <span>Normal</span>
+                </button>
+                <button onclick="resize(-1)" class="btn btn-sm ">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+
+
+            </div>
             <?php
             include $site . ".php"
             ?>
@@ -213,24 +244,262 @@ and open the template in the editor.
         <p>&copy; copywright by EW 2017</p>
 
         <time id="time"></time>        
-        
-    
-        
+
+
+
     </div>
-    
+    <div class="fixed">
+        Serwis wykorzystuje pliki cookies. Jeżeli nie blokujesz plików, to zgadzasz się na ich użycie oraz zapisywanie w pamięci urządzenia.
+        <button class="btn" onclick="hideCookies()">Close</button>
+    </div>
     <script>
-        
-     
-    
-    function eywa () {
-        document.getElementById('time').innerHTML = new Date ();
-        
-    } //deklaracja funkcji
-    
-    setInterval ( eywa, 1000 ); //wywołanie funkcji w pętli co sekundę
+
+//     function closeXXX(){
+//        
+//      $('div.fixed').hide();
+//     
+//    };
+
+        function eywa() {
+            document.getElementById('time').innerHTML = new Date();
+
+        } //deklaracja funkcji
+
+        setInterval(eywa, 1000); //wywołanie funkcji w pętli co sekundę
 //    setInterval ( eywa, 2000 ); //wywołanie funkcji co 2 sekundy
-    
+
+        function hideCookies() {
+
+            localStorage.setItem('clicked', true); // ustawiam localStorage czyli cookies zaakceptowany
+            $('.fixed').hide(); // ukrywam element
+
+        }
+
+        if (!localStorage.getItem('clicked'))
+            $('.fixed').show(); // jesli cookies zaakceptowany to nie pokaże, zaś jeśli nie ustawione to pokaże
+
+        function resize(arg) {
+
+            // 1. pobierz font-size i wpisz do zmiennej
+
+            var fs1 = $('.jumbotron p').css('font-size');
+
+            // 2. wykonaj parseInt aby z 16px wydobyć wartość 16
+
+            var fs2 = parseInt(fs1);
+
+            // 3. Dodaj lub odejmij 1 od 16 i będzie 17 lub 15
+
+            if (arg === 1)
+                fs2++; // powieksz ( b = b+1 )
+
+            else if (arg === -1)
+                fs2--; // zmiejsz ( b = b-1 )
+
+            else if (arg === 0)
+                fs2 = 21; // default
+
+            // 4. Dodaj "px" do 15 lub 17
+
+            fs2 = fs2 + "px";
+
+            // 5. Ustaw 15px lub 17px jako nową wartość dla style.fontSize
+
+            $('.jumbotron p').css('font-size', fs2);
+
+        }
+        
+        //WALIDACJA FORMULARZA
+        
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            var re = /^[1-9]{1}[0-9]{8}$/;
+            return re.test(phone);
+        }
+
+        function check() {
+
+            var name = $('#name').val();
+            var phone = $('#phone').val();
+            var email = $('#email').val();
+            var age = $('#age').val();
+            var male = $('#male').val();
+            var message = $('#message').val();
+
+            var nameOK = false,
+                    phoneOK = false,
+                    emailOK = false,
+                    ageOK = false,
+                    maleOK = false,
+                    messageOK = false;
+
+
+            // NAME
+
+            if (name === '') {
+
+                $('#divName').addClass('has-error');
+
+                $('#divName .alert-danger').slideDown();
+
+                nameOK = false;
+
+            } else {
+
+                $('#divName').removeClass('has-error');
+
+                $('#divName .alert-danger').slideUp();
+
+                nameOK = true;
+
+            }
+
+            // PHONE
+
+            if (phone == '' || validatePhone(phone) === false) {
+
+                $('#divPhone').addClass('has-error');
+
+                $('#divPhone .alert-danger').slideDown();
+
+                phoneOK = false;
+
+            } else {
+
+                $('#divPhone').removeClass('has-error');
+
+                $('#divPhone .alert-danger').slideUp();
+
+                phoneOK = true;
+
+            }
+
+            // EMAIL
+
+            if (email == '' || validateEmail(email) === false) {
+
+                $('#divEmail').addClass('has-error');
+
+                $('#divEmail .alert-danger').slideDown();
+
+                emailOK = false;
+
+            } else {
+
+                $('#divEmail').removeClass('has-error');
+
+                $('#divEmail .alert-danger').slideUp();
+
+                emailOK = true;
+
+            }
+
+            // AGE
+
+            if (age == '' || age > 99 || age < 18) {
+
+                $('#divAge').addClass('has-error');
+
+                $('#divAge .alert-danger').slideDown();
+
+                ageOK = false;
+
+            } else {
+
+                $('#divAge').removeClass('has-error');
+
+                $('#divAge .alert-danger').slideUp();
+
+                ageOK = true;
+
+            }
+
+            // MALE
+
+            if (male == "Proszę wybrać") {
+
+                $('#divMale').addClass('has-error');
+
+                $('#divMale .alert-danger').slideDown();
+
+                maleOK = false;
+
+            } else {
+
+                $('#divMale').removeClass('has-error');
+
+                $('#divMale .alert-danger').slideUp();
+
+                maleOK = true;
+
+            }
+            // MESSAGE
+
+            if (message == '') {
+
+                $('#divMessage').addClass('has-error');
+
+                $('#divMessage .alert-danger').slideDown();
+
+                messageOK = false;
+
+            } else {
+
+                $('#divMessage').removeClass('has-error');
+
+                $('#divMessage .alert-danger').slideUp();
+
+                messageOK = true;
+
+            }
+
+            if (nameOK && phoneOK && emailOK && messageOK && ageOK && maleOK) {
+                // czy moge wyslac, jesli tak to ukryj form i pokaz alert-success
+
+                $('.alert-success').slideDown();
+                $('form').slideUp();
+
+                setTimeout(function () {
+                    $('#name').val(''); //wyczyszczenie inputów po przesłaniu formularza
+                    $('#phone').val('');
+                    $('#email').val('');
+                    $('#age').val('');
+                    $('#male').val('');
+                    $('#message').val('');
+
+                    $('.alert-success').slideUp();
+                    $('form').slideDown();
+
+                }, 5000);
+
+            } else {
+
+                $('.alert-success').slideUp();
+                $('form').slideDown();
+
+            }
+
+        }
+
+
+
+        // 1 != 2 - sprawdzenie czy jedynka NIE RÓWNA SIĘ 2 != jest tożsame co "różne" w matematyce np.  if ( name != '')
+
+        //$('#name').val ('ewa') - tu wpisuje parametr w pole input
+        //$('#name').val ('') - tu odczytuje parametr z pola input
+        //alert ('ewa') można dodać alert, żeby sprawdzić czy funkcja działa, np gdy nazwa funckji jest zastrzeżona. Gdy np zrobimy nazwę close, to alert się nie wyświetli
     </script>
-    <br/>
+
+</body>
+
+</html>
+
+
+</script>
+<br/>
 </body>
 </html>

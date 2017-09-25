@@ -109,6 +109,8 @@
     }
     //można wyłączyć 'document.getElementById('h1').classList' i zrobić var cl = document.getElementById('h1').classList;
     // a potem skrócić zapisy: cl.remove("text-lowercase"), cl.add("text-uppercase") itd
+    
+    
     var LICZBA;
 
     function opcja(liczba) {//na onclicku przekazuje wartość, np 3

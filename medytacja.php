@@ -10,7 +10,7 @@
 <p><span style="color:#d20025">Wspólne medytacje</span><br>
     W&nbsp;naszych ośrodkach kilka razy w&nbsp;tygodniu organizujemy wspólne medytacje. Może wziąć w&nbsp;nich udział każdy. Medytacja trwa zwykle około pół godziny i&nbsp;nie wymaga żadnych przygotowań. Jest bezpłatna i&nbsp;prowadzona w języku polskim.</p>
 <hr>
-<p style="text-align: center"><i>Mantra Om Mani Peme Hung<i></p>
+<p style="text-align: center"><i>Mantra Om Mani Peme Hung</i></p>
 <audio class="center-block" controls>
 
     <source  src="ommani.mp3" type="audio/mpeg">

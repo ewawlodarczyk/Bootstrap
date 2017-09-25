@@ -11,9 +11,8 @@ Wszyscy zainteresowani buddyzmem Diamentowej Drogi spotykają się w&nbsp;nich n
 <p>Medytacje odbywają się regularnie kilka razy w&nbsp;tygodniu, są prowadzone po polsku i&nbsp;trwają około trzydziestu minut. Każdy, nieodpłatnie, może wziąć w&nbsp;nich udział. Nie wymagają specjalnych przygotowań.</p>
 
 <br/><br/><hr/><br/>
-
-
+ 
 <!-- 16:9 aspect ratio -->
 <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IRydSzpO3bk"></iframe>
+  <iframe class="embed-responsive-item" src="https:$('p').css({ 'backgound-color': '#fff' });//www.youtube.com/embed/IRydSzpO3bk"></iframe>
 </div>
