@@ -1,0 +1,60 @@
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+    .carousel-caption p { font-size: 1em; }
+    .carousel-caption h3 { font-size: 2em; text-shadow: 0px 0px 25px black;}
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .carousel-caption p { font-size: 1.5em;}
+    .carousel-caption h3 { font-size: 3em; text-shadow: 0px 0px 25px black;}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+    .carousel-caption p { font-size: 1.5em;}
+    .carousel-caption h3 { font-size: 5em; text-shadow: 0px 0px 25px black;}
+}
+
+.navbar {margin-bottom: 0px; border-radius: 0px; color: pink;}
+
+
+.carousel-caption * { text-shadow: 0px 0px 100px black;}
+
+
+
+body { 
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background-image: url("images/tlo2.jpg");
+    padding-top: 50px; }
+
+div.jumbotron { margin-top: 20px; background-color: white; }
+.jumbotron img { max-width: 300px;}
+.jumbotron img.pull-left { margin-right: 20px;}
+.jumbotron img.pull-right { margin-left: 20px;}
+.list-group { font-size: 1.5em;}
+.table-hover> tbody> tr:hover {background-color: #d20025!important;}
+table#wydarzenia { font-size: 1.5em;
+                   border: 2px solid black!important;}
+button {background-color:#d20025;
+        font-size: 1.3em!important;}
+.czerwony { color:#d20025!important;
+}
+div.fixed {
+    color: black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    /*width: 300px;*/
+    border: 3px double black;
+    background-color: #EEEEEE;
+    padding: 10px;
+    font-size: 0.9em;
+    opacity: 0.8;
+    display: none;
+    /* ustawiam domyślnie na none display by cookies pojawił się tylko gdy nie ma wpisu do localStorage */
+}
+textarea {resize: vertical;}
+.alert { display: none; width: 100%; }
+
+

@@ -1,3 +1,10 @@
+<head>
+    <link rel="stylesheet" href="magnific-popup.css">
+    <style>
+        img {max-width: 100px;}
+    </style>
+</head>
+
 <div class="page-header">
     <h2>Wydarzenia</h2><br>
 </div>
@@ -16,124 +23,80 @@
         <tr>
             <th>13-15 października</th>
             <td>Kurs z IV Dziamgonem Kongtrulem Rinpocze</td>
-            
+
         </tr>
         <tr>
             <th>13-15 listopada</th>
             <td>Kurs z Wojtkiem Tracewskim</td>
-           
+
         </tr>
         <tr>
             <th>13-15 grudnia</th>
             <td>Kurs z Sherabem Gjaltsenem Rinpocze</td>
-           
+
         </tr>
         <tr>
             <th>28-31 grudnia</th>
             <td>Kurs z Lamą Ole Nydahlem</td>
-            
+
         </tr>
 
     </table>
 </div>
+<br><br>
+<h2>Galeria</h2>
+<hr><br><br>
+
+
+<div class="container">
+
+    <div class="parent-container">
+
+        <div class="col-xs-6 col-md-3 thumbnail">
+            <a href="images/gallery1.jpg" >
+                <img src="images/gallery1.jpg">
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3 thumbnail">
+            <a href="images/gallery2.jpg">
+                <img src="images/gallery2.jpg">
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3 thumbnail">
+            <a href="images/gallery3.jpg" >
+                <img src="images/gallery3.jpg">
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-md-3 thumbnail">
+            <a href="images/gallery4.jpg">
+                <img src="images/gallery4.jpg">
+            </a>
+        </div>
+
+    </div>
+
+</div>
+<script src="jquery.magnific-popup.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('.parent-container').magnificPopup({
+            gallery: {enabled: true},
+            delegate: 'a',
+            type: 'image'
+        });
+        /* 
+         krok 1. znalazłem na stronie http://dimsemenov.com/plugins/magnific-popup/ galerię i pobrałem pliki z GITHUBa
+         krok2. dodałem linki do min.js i css
+         krok3. zgodnie z domumentacją ze strony http://dimsemenov.com/plugins/magnific-popup/documentation.html dodaję do każdego atrybutu href dla każdego tagu a to samo co jest w scr dla obrazka plus elemnt nadrzędny dostaje klasę .parent-container
+         krok4. wklejam kod powyżej tego komentarza i już działa! :)
+                 
+         */
+
+    });
+</script>
 <br/><br/>
-<div>
-    <table>
-
-        <tr>
-
-            <td>
-                <input class="form-control" id="argument1"/>
-            </td>
-            <td>
-
-                <button onclick="opcja(1)" class="btn btn-primary">+</button>
-                <button onclick="opcja(2)" class="btn btn-danger">-</button>
-                <button onclick="opcja(3)" class="btn btn-warning">*</button>
-                <button onclick="opcja(4)" class="btn btn-info">/</button>
-
-            </td>
-            <td>
-                <input class="form-control" id="argument2"/>
-            </td>
-            <td>
-                <button class="btn btn-block" onclick="policz()">Policz</button>
-            </td>
-            <td>
-                <p style="width:200px; text-align: center; font-size: 1.5em;" id="wynik"></p>
-            </td>
-
-        </tr>
-
-
-    </table>
-    
-        <hr/>
-        <h1 id="h1" class="text-center">Ewa Włodarczyk</h1>
-        
-        <button onclick="klasaCzerwony(true)" class="btn btn-success">dodaj klasę czerwony</button>
-        <button onclick="klasaCzerwony(false)" class="btn btn-danger ">usuń klasę czerwony</button>
-        <button onclick="ukryjPokaz()" class="btn btn-primary"> UKRYJ / POKAŻ </button>
-</div>
-<script>
-    
-    function ukryjPokaz () {
-
-        if ( document.getElementById('h1').style.display == 'block') { //jeśli jest none to ustaw block
-            document.getElementById('h1').style.display = 'none';
-            
-   }
-        else {
-           document.getElementById('h1').style.display = 'block'; 
-        }
-        
-        
-    }
-    
-//    function klasaCzerwony ( stan ){
-//        if(stan)
-//            document.getElementById('h1').classList.add("czerwony");
-//        else
-//            document.getElementById('h1').classList.remove("czerwony"); 
-//    }
-     function klasaCzerwony ( stan ){
-        if(stan) {
-            document.getElementById('h1').classList.remove("text-lowercase");
-            document.getElementById('h1').classList.add("text-uppercase");
-        }
-           
-        else {
-            document.getElementById('h1').classList.remove("text-uppercase"); 
-            document.getElementById('h1').classList.add("text-lowercase"); 
-        }
-    }
-    //można wyłączyć 'document.getElementById('h1').classList' i zrobić var cl = document.getElementById('h1').classList;
-    // a potem skrócić zapisy: cl.remove("text-lowercase"), cl.add("text-uppercase") itd
-    
-    
-    var LICZBA;
-
-    function opcja(liczba) {//na onclicku przekazuje wartość, np 3
-        LICZBA = liczba;//wpisuje 3 do globalnej zmiennej gdyż liczba jest lokalna i nie odczytam jej wartości później
-    }
-
-    function policz() {
-        var arg1 = document.getElementById('argument1').value;
-        var arg2 = document.getElementById('argument2').value;
-        var wynik;// plusy wymuszają sumowanie i to, że to są liczby a nie teskty '1' czy '2', mogę być wszystkie działania: +,-,*,///
-
-        if (LICZBA === 1) {
-            wynik = +arg1 + +arg2;
-        } //nawiasy mogą być, ale nie muszą. Kiedy jest jeden element, to nie ma konieczności
-        if (LICZBA === 2)
-            wynik = +arg1 - +arg2;
-        if (LICZBA === 3) {
-            wynik = +arg1 * +arg2;
-        }
-        if (LICZBA === 4) {
-            wynik = +arg1 / +arg2;
-        }
-
-        document.getElementById('wynik').innerHTML = wynik;
-    }
-</script>  

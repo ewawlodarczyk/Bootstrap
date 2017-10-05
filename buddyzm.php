@@ -14,5 +14,5 @@ Wszyscy zainteresowani buddyzmem Diamentowej Drogi spotykają się w&nbsp;nich n
  
 <!-- 16:9 aspect ratio -->
 <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https:$('p').css({ 'backgound-color': '#fff' });//www.youtube.com/embed/IRydSzpO3bk"></iframe>
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IRydSzpO3bk"></iframe>
 </div>
